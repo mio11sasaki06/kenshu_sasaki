@@ -17,7 +17,6 @@ import todo.dao.TodoDao;
  */
 @WebServlet("/todo/search")
 public class SearchServlet extends HttpServlet {
-
        
 	/**
 	 * 
@@ -30,7 +29,6 @@ public class SearchServlet extends HttpServlet {
 	    	  List<TodoValueObject> list = dao.todoList();
 	    	  request.setAttribute("todoList", list);
 	      } catch(Exception e) {
-
 	    	  throw new ServletException(e);
 	      } finally {
 	    	  dao.closeConnection();

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import todo.dao.TodoDao;
+import todo.util.SimpleMailSender;
 
 
 
@@ -55,7 +56,16 @@ if(id == 0){
 }finally{
 	dao.closeConnection();
 }
-
+String toAddr = "mio.s.yfm@gmail.com";
+String fromAddr = "FromAddress@example.com";
+String personName = "USERNAME";
+String subject = "TODO管理アプリケーションからの報告です";
+SimpleMailSender mail = new SimpleMailSender();
+try{
+	mail.sendMessage(toAddr, fromAddr, personName, subject, message);
+} catch(Exception e) {
+	e.printStackTrace();
+}
 
 RequestDispatcher rd = request.getRequestDispatcher("/todo/search");
 rd.forward(request, response);
